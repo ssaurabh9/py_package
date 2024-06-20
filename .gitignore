@@ -4,7 +4,6 @@ target/
 node_modules/
 gen/
 release.properties
-py_strique/
 venv/
 build/
 dist/
