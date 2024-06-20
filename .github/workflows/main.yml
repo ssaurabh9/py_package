@@ -24,9 +24,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install build twine setuptools wheel grpcio grpcio-tools protobuf
 
-    - name: Build package
+    - name: Build proto
       run: |
         python setup.py build
+    
+    - name: List dir after builds
+      run: |
+        ls -R
+        
+    - name: Package Proto
+      run: |
         cd strique_pyproto
         python -m build
 
