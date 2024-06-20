@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package strique.constants;
+
+option java_package = "com.strique.constants.datetime";
+option java_outer_classname = "DayOfWeekProto";
+
+// Next Id : 8
+// Proto enum for name of the wek days.
+enum DayOfWeek { 
+    DAYOFWEEK_UNKNWON = 0;
+    MONDAY = 1;
+    TUESDAY = 2;
+    WEDNESDAY = 3;
+    THURSDAY = 4;
+    FRIDAY = 5;
+    SATURDAY = 6;
+    SUNDAY = 7;
+}

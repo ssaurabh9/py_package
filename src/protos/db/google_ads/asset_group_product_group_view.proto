@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package strique.model.db.google_ads;
+
+import "types/generic_marketing_composite_key/generic_marketing_composite_key.proto";
+import "db/google_ads/advertising_channel_type.proto";
+import "db/google_ads/google_ads_status.proto";
+
+option java_package = "com.strique.model.db.googleads";
+option java_outer_classname = "AssetGroupProductGroupViewProto";
+
+//Next Id : 17
+// A protobuf to store AssetGroupProductGroupView data object.
+message AssetGroupProductGroupView {
+    // Store composite primary key
+    types.GenericMarketingCompositeKey id = 1;
+
+    // The primary serving target for ads within the campaign.
+    AdvertisingChannelType campaign_advertising_channel_type = 2;
+
+    // Name of the asset group
+    string asset_group_name = 3;
+
+    // The status of the asset group.
+    GoogleAdsStatus asset_group_status = 4;
+
+    enum FilterType {
+        FILTERTYPE_UNKNOWN = 0;
+        SUBDIVISION = 1;
+        UNIT_EXCLUDED = 2;
+        UNIT_INCLUDED = 3;
+        FILTERTYPE_UNSPECIFIED = 4;
+    }
+    // Type of a listing group filter node.
+    FilterType asset_group_listing_group_filter_type = 5;
+
+    // The ID of the campaign.
+    uint64 campaign_id = 6;
+
+    // The name of the campaign.
+    string campaign_name = 7;
+
+    // The status of the campaign. 
+    GoogleAdsStatus campaign_status = 8;
+
+    // The status of the asset group.
+    GoogleAdsStatus asset_group_primary_status = 9;
+
+    // The path of dimensions defining this listing group filter.
+    optional string asset_group_listing_group_filter_path = 10;
+
+    // No. of impressions.
+    uint64 impressions = 11;
+
+    // The number of clicks.
+    uint64 clicks = 12;
+
+    // The sum of CPC and CPM costs during this period.
+    uint64 cost_micros = 13;
+
+    // The number of conversions.
+    double conversions = 14;
+
+    // The total number of conversions.
+    double all_conversions = 15;
+
+    // Conversions from interactions divided by the number of ad interactions.
+    double conversions_from_interactions_rate = 16;
+}

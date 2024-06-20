@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package strique.model.view_config;
+
+import "google/protobuf/timestamp.proto";
+import "widget/widget.proto";
+
+option java_package = "com.strique.model.viewconfig";
+option java_outer_classname = "ViewConfigResponseProto";
+
+// Next Id: 2
+// Proto definition of View configuration response.
+message ViewConfigResponse {
+    repeated ViewConfig view_configs = 1;
+}
+
+// Next Id: 5
+// Proto definition of View configuration.
+// Will map to a single report instance on the Report Page UI.
+message ViewConfig {
+    string view_config_id = 1;
+
+    // Specifies the title to be displayed for a specific report instance
+    string view_config_title = 2;
+
+    // Specifies the list of widget metadata present in a specific view.
+    // Each entry corresponds to a specific widget. (Like MetaAdsOverviewWidget, TopPerformingCampaignsWidget etc).
+    // NOTE: Will be consumed in the same order as recieved on the frontend (Order matters).
+    repeated widget.WidgetMetadata widgets_metadata = 3;
+
+    // Specifies when this View configuration was created.
+    google.protobuf.Timestamp created_at = 4;
+}

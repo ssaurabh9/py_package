@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package strique.constants;
+
+option java_package = "com.strique.constants.gender";
+option java_outer_classname = "GenderProto";
+
+// Next Id : 4
+// Proto enum of gender types.
+enum Gender { 
+    GENDER_UNKWON = 0;
+    MALE = 1;
+    FEMALE = 2;
+    OTHER = 3;
+}

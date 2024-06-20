@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package strique.model.db.amazon_seller;
+
+import "types/generic_marketing_composite_key/generic_marketing_composite_key.proto";
+
+option java_package = "com.strique.model.db.amazonseller";
+option java_outer_classname = "ProductProto";
+
+//Next Id : 8
+// A protocol buffer message for products.
+message Product {
+  // Composite primary key
+  types.GenericMarketingCompositeKey id = 1;
+
+  // Amazon standard identification number of parent
+  string parent_asin = 2;
+
+  // Amazon standard identification number of child
+  string child_asin = 3;
+
+  // sessions created for product for a day
+  uint64 sessions = 4;
+
+  // page view of a product for a day
+  uint64 page_views = 5;
+
+  // buy box percentage of product for a day
+  float buy_box_percentage = 6;
+
+  // titl of a product
+  string title = 7;
+
+}

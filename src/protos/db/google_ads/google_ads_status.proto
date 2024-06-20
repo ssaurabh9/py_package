@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package strique.model.db.google_ads;
+
+option java_package = "com.strique.model.db.googleads";
+option java_outer_classname = "GoogleAdsStatusProto";
+
+// Next Id : 5
+// Proto enum for google ads status.
+enum GoogleAdsStatus {
+    GOOGLEADSSTATUS_UNKNOWN = 0;
+    GOOGLEADSSTATUS_ENABLED = 1;
+    GOOGLEADSSTATUS_PAUSED = 2;
+    GOOGLEADSSTATUS_REMOVED = 3;
+    GOOGLEADSSTATUS_UNSPECIFIED = 4;
+}

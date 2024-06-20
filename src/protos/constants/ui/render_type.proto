@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package strique.constants.ui;
+
+option java_package = "com.strique.constants.ui";
+option java_outer_classname = "RenderTypeProto";
+
+// Next Id: 2
+// Enumeration of Render options for a specific widget.
+enum RenderType {
+    // Keep it alphabetically sorted
+    RENDERTYPE_UNKNOWN = 0;
+    TABLE = 1;
+}
