@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package strique.constants;
+
+option java_package = "com.strique.constants.currencies";
+option java_outer_classname = "CurrencyProto";
+
+// Next Id: 3
+// Enumeration to store all supported currencies
+enum Currency {
+    // Keep it alphabetically sorted
+    CURRENCY_UNKNOWN = 0;
+    INR = 1; // Indian Rupee
+    USD = 2; // US dollar
+}

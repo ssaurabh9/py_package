@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package strique.model.db.google_analytics;
+
+import "types/generic_marketing_composite_key/generic_marketing_composite_key.proto";
+
+option java_package = "com.strique.model.db.googleanalytics";
+option java_outer_classname = "TopBrowsersProto";
+
+
+//Next Id : 8
+// A protobuf to store browsers wise data object.
+message TopBrowsers {
+    // Store composite primary key.
+    types.GenericMarketingCompositeKey id = 1;
+
+    enum Browser {
+        BROWSER_UNKNWON = 0;
+        CHROME = 1;
+        ANDROID_WEBVIEW = 2;
+        SAFARI = 3;
+        SAFARI_IN_APP = 4;
+        SAMSUNG_INTERNET = 5;
+        ALOHA_BROWSER = 6;
+        ANDROID_RUNTIME = 7;
+        EDGE = 8;
+        FIREFOX = 9;
+        OPERA = 10;
+        OPERA_MINI = 11;
+        UC_BROWSER = 12;
+        WATERFOX = 13;
+        NOT_SET = 14;
+    }
+    // Name of browser.
+    Browser browser = 2;
+
+    // Number of session created for a day by browser.
+    uint64 sessions = 3;
+
+    // Number of add to cart done for a day by browser.
+    uint64 add_to_carts = 4;
+
+    // Number of checkouts done for a day by browser.
+    uint64 checkouts = 5;
+
+    // Number of purchase done for a day by browser.
+    uint64 ecommerce_purchases = 6;
+
+    // Total revenue generated for a day by browser.
+    double purchases_revenue = 7;
+ 
+}

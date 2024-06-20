@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package strique.model.db.shopify;
+
+import "google/protobuf/timestamp.proto";
+import "db/shopify/line_item.proto";
+import "db/shopify/refund.proto";
+
+option java_package = "com.strique.model.db.shopify";
+option java_outer_classname = "OrdersProto";
+
+//Next Id : 15
+// Aprotocol buffer for storing data of shopify orders.
+message Orders {
+  uint64 order_id = 1;
+
+  string platform_id = 2;
+
+  google.protobuf.Timestamp date = 3;
+
+  optional string source_name = 4;
+
+  optional string billing_address_city = 5;
+
+  optional string billing_address_province = 6;
+
+  optional string shipping_address_city = 7;
+
+  optional string shipping_address_province = 8;
+
+  double sub_total_price = 9;
+
+  double total_discount = 10;
+
+  optional string discount_code = 11;
+
+  optional google.protobuf.Timestamp updated_date = 12;
+
+  repeated LineItem line_items = 13;
+
+  repeated Refund refunds = 14;
+}

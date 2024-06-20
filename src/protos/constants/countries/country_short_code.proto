@@ -1,0 +1,15 @@
+
+syntax = "proto3";
+
+package strique.constants;
+
+option java_package = "com.strique.constants.countries";
+option java_outer_classname = "CountryShortCodesProto";
+
+// Next Id: 2
+// Enum for storing the country code
+enum CountryShortCodes {
+    // Keep it alphabatically sorted
+    COUNTRYSHORTCODE_UNKNOWN = 0;
+    IN = 1; // INDIA
+}
