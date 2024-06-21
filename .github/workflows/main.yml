@@ -47,5 +47,5 @@ jobs:
         TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
       run: |
-        python -m twine upload --repository-url https://upload.github.com/repos/${{ github.repository }} ./strique_protopy/dist/* 
+        python -m twine upload --repository-url https://upload.github.com/${{ github.repository }} ./strique_protopy/dist/* 
     
