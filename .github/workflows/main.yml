@@ -28,9 +28,9 @@ jobs:
       run: |
         python setup.py build
     
-    - name: List dir after builds
+    - name: Copy pyproject.toml to new dir
       run: |
-        ls -R
+       cp ./pyproject.toml ./strique_protopy/
         
     - name: Package Proto
       run: |
