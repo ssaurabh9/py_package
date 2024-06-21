@@ -41,5 +41,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        python -m twine upload --repository-url https://api.github.com/repos/${{ github.repository }}/packages/pypi/upload dist/*
+        python -m twine upload --repository-url https://api.github.com/repos/${{ github.repository }} dist/*
       if: github.event_name == 'release'
