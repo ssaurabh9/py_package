@@ -37,9 +37,13 @@ jobs:
         cd ./strique_protopy
         python -m build
 
+    - name: List dist directory
+      run: |
+        cd ./strique_protopy/dist
+        ls -R
+
     - name: Publish to GitHub Packages
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        python -m twine upload --repository-url https://api.github.com/repos/${{ github.repository }} dist/*
-      if: github.event_name == 'release'
+        python -m twine upload --repository-url https://api.github.com/repos/${{ github.repository }} ./strique_protopy/dist/*
