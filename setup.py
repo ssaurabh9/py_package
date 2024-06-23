@@ -49,7 +49,6 @@ def build_proto():
                     else:
                         f.write(f'from .{relative_path}.{module_name} import *\n')
 
-build_proto()
 
 setup(
     name='strique-protopy',

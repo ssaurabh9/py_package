@@ -1,0 +1,61 @@
+name: Build and Publish to Private PyPI
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    
+    services:
+      private-pypi:
+        image: privatepypi/private-pypi:0.2.0
+        ports:
+          - 8888:8888
+        volumes:
+          - private-pypi-root:/private-pypi-root
+        env:
+          PRIVATE_PYPI_COMMAND: server
+          PRIVATE_PYPI_COMMAND_ROOT: /private-pypi-root
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requirements.txt
+    
+    - name: Setup private-pypi
+      run: |
+        curl \
+          -d "config=${CONFIG}&admin_secret=${ADMIN_SECRET}" \
+          -X POST \
+          http://localhost:8888/initialize/
+      env:
+        CONFIG: |
+          [py_package]
+          type = "github"
+          owner = "ssaurabh9"
+          repo = "py_package"
+        ADMIN_SECRET: |
+          [py_package]
+          type = "github"
+          raw = "${{ secrets.GITHUB_TOKEN }}"
+    
+    - name: Build package
+      run: python -m build
+    
+    - name: Publish to private PyPI
+      env:
+        TWINE_REPOSITORY_URL: http://localhost:8888/simple/
+        TWINE_USERNAME: __token__
+        TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+      run: twine upload dist/*
