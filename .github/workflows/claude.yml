@@ -53,7 +53,7 @@ jobs:
 
     - name: Check Dir
       run: |
-        cd ls -R
+        ls -R
 
     - name: Build proto
       run: |
@@ -61,7 +61,7 @@ jobs:
 
     - name: Check Dir
       run: |
-        cd ls -R
+        ls -R
     
     - name: Copy pyproject.toml to new dir
       run: |
