@@ -36,7 +36,7 @@ jobs:
     - name: Setup private-pypi
       run: |
         curl \
-          -d "config=${CONFIG}&admin_secret=${ADMIN_SECRET}" \
+          -d "config=${CONFIG}&admin_secret=${{secrets.GIT_TOKEN}}" \
           -X POST \
           http://localhost:8888/initialize/
       env:
