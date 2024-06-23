@@ -50,9 +50,6 @@ jobs:
           [py_package]
           type = "github"
           raw = "${{ secrets.GIT_TOKEN }}"
-  
-    - name: Verify Private PyPI Setup
-      run: curl http://localhost:8888/simple/
 
     - name: Build proto
       run: |
@@ -60,7 +57,7 @@ jobs:
     
     - name: Copy pyproject.toml to new dir
       run: |
-       cp ./pyproject.toml ./strique_protopy/
+       cp ./strique_protopy/pyproject.toml ./strique_protopy/
         
     - name: Package Proto
       run: |
