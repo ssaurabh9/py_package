@@ -52,7 +52,8 @@ jobs:
           raw = "${{ secrets.GIT_TOKEN }}"
   
     - name: Verify Private PyPI Setup
-      run: curl http://localhost:8888/simple/
+      run: |
+        curl http://localhost:8888/simple/
 
     - name: Build proto
       run: |
