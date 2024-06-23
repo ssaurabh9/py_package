@@ -57,7 +57,7 @@ jobs:
     
     - name: Run github to index
       run: |
-        create_pypi_index.py
+        python create_pypi_index.py
     
         
     - name: Package Proto
