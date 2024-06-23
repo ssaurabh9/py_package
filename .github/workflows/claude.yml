@@ -55,6 +55,9 @@ jobs:
       run: |
         python setup.py build
     
+    - name: Run github to index
+      run: |
+        github-to-pypi-index --user ssaurabh9 --repo py_package --branch gh-pages --token ${{ secrets.GIT_TOKEN }}
     
         
     - name: Package Proto

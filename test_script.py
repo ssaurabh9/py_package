@@ -8,5 +8,4 @@ if __name__ == "__main__":
     main()
 
 
-import strique_protobuf_package
-
+from py_package.src.resources.py_strique.strique_protobuf_package import your_proto_file_pb2
