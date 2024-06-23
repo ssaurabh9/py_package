@@ -57,7 +57,7 @@ jobs:
     
     - name: Run github to index
       run: |
-        github-to-pypi-index --user ssaurabh9 --repo py_package --branch gh-pages --token ${{ secrets.GIT_TOKEN }}
+        create_pypi_index.py
     
         
     - name: Package Proto
