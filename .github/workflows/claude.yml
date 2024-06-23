@@ -57,7 +57,7 @@ jobs:
     
     - name: Copy pyproject.toml to new dir
       run: |
-       cp /strique_protopy/pyproject.toml ./strique_protopy/
+       cp strique_protopy/pyproject.toml ./strique_protopy/
         
     - name: Package Proto
       run: |
