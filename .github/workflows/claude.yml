@@ -45,17 +45,28 @@ jobs:
           type = "github"
           owner = "ssaurabh9"
           repo = "py_package"
+          branch = "main"
         ADMIN_SECRET: |
           [py_package]
           type = "github"
           raw = "${{ secrets.GITHUB_TOKEN }}"
+
+    - name: Build proto
+      run: |
+        python setup.py build
     
-    - name: Build package
-      run: python -m build
+    - name: Copy pyproject.toml to new dir
+      run: |
+       cp ./pyproject.toml ./strique_protopy/
+        
+    - name: Package Proto
+      run: |
+        cd ./strique_protopy
+        python -m build
     
     - name: Publish to private PyPI
       env:
         TWINE_REPOSITORY_URL: http://localhost:8888/simple/
         TWINE_USERNAME: __token__
         TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-      run: twine upload dist/*
+      run: twine upload ./strique_protopy/dist/* 
