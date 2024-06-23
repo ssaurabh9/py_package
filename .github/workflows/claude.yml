@@ -45,11 +45,7 @@ jobs:
           type = "github"
           owner = "ssaurabh9"
           repo = "py_package"
-          branch = "main"
-        ADMIN_SECRET: |
-          [py_package]
-          type = "github"
-          raw = "${{ secrets.GIT_TOKEN }}"
+          branch = {{ secrets.GIT_TOKEN }}
   
     - name: Verify Private PyPI Setup
       run: |
