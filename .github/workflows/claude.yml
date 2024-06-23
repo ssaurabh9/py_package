@@ -51,9 +51,17 @@ jobs:
           type = "github"
           raw = "${{ secrets.GIT_TOKEN }}"
 
+    - name: Check Dir
+      run: |
+        ls -R
+
     - name: Build proto
       run: |
         python setup.py build
+
+    - name: Check Dir
+      run: |
+        ls -R
     
     - name: Copy pyproject.toml to new dir
       run: |
