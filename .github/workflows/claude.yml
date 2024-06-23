@@ -49,7 +49,7 @@ jobs:
         ADMIN_SECRET: |
           [py_package]
           type = "github"
-          raw = "${{ secrets.GITHUB_TOKEN }}"
+          raw = "${{ secrets.GIT_TOKEN }}"
 
     - name: Build proto
       run: |
@@ -68,5 +68,5 @@ jobs:
       env:
         TWINE_REPOSITORY_URL: http://localhost:8888/simple/
         TWINE_USERNAME: __token__
-        TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        TWINE_PASSWORD: ${{ secrets.GIT_TOKEN }}
       run: twine upload ./strique_protopy/dist/* 
