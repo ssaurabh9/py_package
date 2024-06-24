@@ -57,9 +57,7 @@ setup(
     description='Python package for Strique AI with generated protobuf classes and binary_pb files',
     url='https://github.com/ssaurabh9/py_package',
     packages=['strique_protopy'],
-    package_data={'strique_protopy': ['*.py', '*.binary_pb']},
+    package_data={'strique_protopy': './strique_protopy'},
     install_requires=[
-        'grpcio',
-        'protobuf',
     ],
 )
