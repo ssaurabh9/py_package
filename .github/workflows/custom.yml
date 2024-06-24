@@ -84,6 +84,8 @@ jobs:
         prerelease: false
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
+      run: |
+        ls -R
       env:
         GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
       with:
