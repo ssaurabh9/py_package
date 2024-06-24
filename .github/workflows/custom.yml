@@ -61,9 +61,6 @@ jobs:
       run: |
         python setup.py build
     
-    - name: Run github to index
-      run: |
-        python create_pypi_index.py
     
         
     - name: Package Proto
