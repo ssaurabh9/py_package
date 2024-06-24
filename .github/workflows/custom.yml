@@ -70,10 +70,24 @@ jobs:
       run: |
         cd ./strique_protopy
         python -m build
-    
-    - name: Publish to private PyPI
+  
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
       env:
-        TWINE_REPOSITORY_URL: http://localhost:8888/simple/
-        TWINE_USERNAME: "py_package"
-        TWINE_PASSWORD: ${{ secrets.GIT_TOKEN }}
-      run: twine upload --verbose ./strique_protopy/dist/* 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./strique_protopy/dist/* 
+        asset_name: my_package
+        asset_content_type: application/octet-stream
