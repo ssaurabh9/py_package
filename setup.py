@@ -1,7 +1,14 @@
 from setuptools import setup, find_packages
+from setuptools.command.build_py import build_py as _build_py
 import subprocess
 import os
 import shutil
+
+class build_py(_build_py):
+    def run(self):
+        build_proto()
+        super().run()
+
 def build_proto():
     proto_src_dir = 'src/protos'
     proto_dest_dir = 'strique_protopy'
@@ -48,11 +55,9 @@ def build_proto():
                     else:
                         f.write(f'from .{relative_path}.{module_name} import *\n')
 
-build_proto()
-
 setup(
     name='strique-protopy',
-    version='0.2.2',
+    version='0.2.5',
     description='Python package for Strique AI with generated protobuf classes and binary_pb files',
     url='https://github.com/ssaurabh9/py_package',
     packages=find_packages(),
@@ -61,4 +66,7 @@ setup(
         'grpcio',
         'protobuf',
     ],
+    cmdclass={
+        'build_py': build_py,
+    },
 )
