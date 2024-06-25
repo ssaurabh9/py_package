@@ -68,6 +68,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./strique_protopy/dist/strique_protopy-${env.VERSION}-py3-none-any.whl
-        asset_name: strique_protopy-${env.VERSION}
+        asset_path: ./strique_protopy/dist/strique_protopy-${{env.VERSION}}-py3-none-any.whl
+        asset_name: strique_protopy-${{env.VERSION}}
         asset_content_type: application/gzip
