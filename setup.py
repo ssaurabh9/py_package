@@ -2,10 +2,10 @@ from setuptools import setup, find_packages
 import subprocess
 import os
 import shutil
-
+import strique_protopy
 def build_proto():
     proto_src_dir = 'src/protos'
-    proto_dest_dir = 'src/strique_protopy'
+    proto_dest_dir = 'strique_protopy'
     
     if os.path.exists(proto_dest_dir):
         shutil.rmtree(proto_dest_dir)
@@ -56,8 +56,7 @@ setup(
     version='0.2.2',
     description='Python package for Strique AI with generated protobuf classes and binary_pb files',
     url='https://github.com/ssaurabh9/py_package',
-    packages=find_packages(where='src'),
-    package_dir={'': 'src'},
+    packages=find_packages(),
     package_data={'strique_protopy': ['*.py', '*.binary_pb']},
     install_requires=[
         'grpcio',
