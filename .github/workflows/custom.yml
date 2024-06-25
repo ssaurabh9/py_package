@@ -60,7 +60,7 @@ jobs:
     - name: Build proto
       run: |
         python setup.py build
-    
+   
     - name: Copy pyproject.toml to new dir
       run: |
        cp ./pyproject.toml ./strique_protopy/
@@ -70,6 +70,10 @@ jobs:
       run: |
         cd ./strique_protopy
         python -m build
+
+    - name: Get version
+      id: get_version
+      run: echo ::set-output name=VERSION::$(date +'%Y.%m.%d.%H%M%S')
   
 
     - name: Create Release
@@ -78,20 +82,21 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: v${{ steps.get_version.outputs.VERSION }}
+        release_name: Release ${{ steps.get_version.outputs.VERSION }}
         draft: false
         prerelease: false
 
     - name: List DIR
       run: |
         ls -R
+        
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./dist/* 
-        asset_name: my_package
-        asset_content_type: application/octet-stream
+        asset_path: ./strique_protopy/dist/*
+        asset_name: my_package-${{ steps.get_version.outputs.VERSION }}
+        asset_content_type: application/gzip
