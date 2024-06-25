@@ -2,7 +2,6 @@ from setuptools import setup, find_packages
 import subprocess
 import os
 import shutil
-import strique_protopy
 def build_proto():
     proto_src_dir = 'src/protos'
     proto_dest_dir = 'strique_protopy'
