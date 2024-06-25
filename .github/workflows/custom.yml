@@ -8,17 +8,6 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
-    
-    services:
-      private-pypi:
-        image: privatepypi/private-pypi:0.2.0
-        ports:
-          - 8888:8888
-        volumes:
-          - private-pypi-root:/private-pypi-root
-        env:
-          PRIVATE_PYPI_COMMAND: server
-          PRIVATE_PYPI_COMMAND_ROOT: /private-pypi-root
 
     steps:
     - uses: actions/checkout@v2
@@ -39,6 +28,8 @@ jobs:
         VERSION=$(grep '^version =' pyproject.toml | sed 's/version = "//' | sed 's/"//')
         echo "VERSION=$VERSION" >> $GITHUB_ENV
 
+    - name: Display extracted version
+      run: echo "Extracted version is ${{ env.VERSION }}"
 
     - name: Build proto
       run: |
@@ -53,10 +44,6 @@ jobs:
       run: |
         cd ./strique_protopy
         python -m build
-
-    - name: Get version
-      id: get_version
-      run: echo ::set-output name=VERSION::$(date +'%Y.%m.%d.%H%M%S')
   
 
     - name: Create Release
