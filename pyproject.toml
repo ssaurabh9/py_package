@@ -4,17 +4,38 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "strique-protopy"
-version = "0.1.9"
+version = "0.2.0"
 description = "Python package for Strique AI with generated protobuf classes and binary_pb files"
-requires-python = ">=3.7"
+requires-python = ">=3.9"
 dependencies = [
     "grpcio",
     "protobuf",
+    "grpcio-tools",
 ]
 
 [tool.setuptools]
-
-package-dir = {"" = "."}
+package-dir = {"" = "src"}
 
 [tool.setuptools.package-data]
-"*" = ["*.py", "*.binary_pb"]
+strique_protopy = ["*.py", "*.binary_pb"]
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers"
+
+[tool.black]
+line-length = 88
+target-version = ['py37', 'py38', 'py39', 'py310']
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+python_version = 3.9
+warn_unused_configs = True
+strict_optional = True
+ignore_missing_imports = True
+follow_imports = "silent"
+
+[tool.pylint]
+max-line-length = 88
+disable = ["C0114", "C0115", "C0116"]
