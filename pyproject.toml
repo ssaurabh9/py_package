@@ -4,14 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "strique-protopy"
-version = "0.3.0"
+version = "0.3.1"
 description = "Python package for Strique AI with generated protobuf classes and binary_pb files"
 requires-python = ">=3.7"
-dependencies = [
-    "grpcio",
-    "protobuf",
-    "grpcio-tools",
-]
+
 
 [tool.setuptools]
 package-dir = {"" = "src"}
