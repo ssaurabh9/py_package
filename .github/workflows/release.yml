@@ -67,6 +67,7 @@ jobs:
           asset_content_type: application/gzip
 
   update-index:
+    needs: build-and-publish
     runs-on: ubuntu-latest
 
     steps:
