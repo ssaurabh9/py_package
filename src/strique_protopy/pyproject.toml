@@ -14,11 +14,12 @@ dependencies = [
 ]
 
 [tool.setuptools]
+package-dir = {"": "src/strique_protopy/src"}
 packages = ["strique_protopy"]
-package-data = {strique_protopy = ["*.py", "*.binary_pb"]}
+include-package-data = true
 
-[tool.setuptools.packages.find]
-where = ["src/strique_protopy/src"]
+[tool.setuptools.package-data]
+strique_protopy = ["*.py", "*.binary_pb"]
 
 [tool.pytest.ini_options]
 addopts = "--strict-markers"
