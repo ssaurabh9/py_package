@@ -12,7 +12,11 @@ dependencies = [
     "protobuf",
     "grpcio-tools",
 ]
+[tool.setuptools]
+packages = ["strique_protopy"]
 
+[tool.setuptools.packages.find]
+where = ["src/strique_protopy/src"]
 
 [tool.setuptools.package-data]
 strique_protopy = ["*.py", "*.binary_pb"]
