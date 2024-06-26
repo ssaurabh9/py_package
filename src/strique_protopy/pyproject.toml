@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [tool.setuptools]
-package-dir = {""= "src/strique_protopy/src"}
+package-dir = {""= "src"}
 packages = ["strique_protopy"]
 include-package-data = true
 
