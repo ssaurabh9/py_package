@@ -35,13 +35,11 @@ jobs:
         run: |
           python setup.py build
    
-      - name: Copy pyproject.toml to new dir
-        run: |
-          cp ./pyproject.toml ./strique_protopy/
+      
     
       - name: Package Proto
         run: |
-          cd ./strique_protopy
+          cd ./src/strique_protopy/src
           python -m build
   
       - name: Create Release
