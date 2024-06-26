@@ -6,9 +6,8 @@ on:
       - main
 
 jobs:
-  
+
   update-index:
-  needs: build-and-publish
   runs-on: ubuntu-latest
 
   steps:
