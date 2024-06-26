@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "strique-protopy"
-version = "0.2.7"
+version = "0.3.0"
 description = "Python package for Strique AI with generated protobuf classes and binary_pb files"
 requires-python = ">=3.7"
 dependencies = [
