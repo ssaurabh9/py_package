@@ -73,6 +73,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+        token: ${{ secrets.GIT_TOKEN }}
 
       - name: Generate index.html
         run: |
@@ -96,3 +98,5 @@ jobs:
           git add index.html
           git commit -m "Update index.html for release ${{ env.VERSION }}"
           git push
+        env:
+        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
