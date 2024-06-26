@@ -1,10 +1,10 @@
 import subprocess
 import os
 import shutil
-
+import strique_protopy
 def build_proto():
     proto_src_dir = 'src/protos'
-    proto_dest_dir = 'src/strique_protopy/src'
+    proto_dest_dir = 'src/strique_protopy'
     
     if os.path.exists(proto_dest_dir):
         shutil.rmtree(proto_dest_dir)
