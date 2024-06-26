@@ -84,8 +84,13 @@ jobs:
           echo '<body>' >> index.html
           echo '<h1>Simple Index</h1>' >> index.html
           echo '<ul>' >> index.html
-          for file in $(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r ".assets[].browser_download_url"); do
-            echo "  <li><a href=\"${file}\">$(basename ${file})</a></li>" >> index.html
+          # Fetch the latest release information
+          release_info=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest)
+          for file in $(echo $release_info | jq -r ".assets[].browser_download_url"); do
+            file_name=$(basename ${file})
+            # Extract the custom name by removing the specific part of the file name
+            custom_name=$(echo $file_name | sed 's/-py3-none-any.whl//')
+            echo "  <li><a href=\"${file}\">${custom_name}</a></li>" >> index.html
           done
           echo '</ul>' >> index.html
           echo '</body>' >> index.html
