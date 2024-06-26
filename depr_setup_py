@@ -12,7 +12,7 @@ class build_py(_build_py):
 class build_proto(_build_py):
     def run(self):
         proto_src_dir = 'src/protos'
-        proto_dest_dir = 'strique_protopy'
+        proto_dest_dir = 'src/strique_protopy/src'
         
         if os.path.exists(proto_dest_dir):
             shutil.rmtree(proto_dest_dir)
