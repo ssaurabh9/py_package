@@ -39,7 +39,7 @@ jobs:
     
       - name: Package Proto
         run: |
-          cd ./src/strique_protopy/src
+          cd ./src/strique_protopy
           python -m build
   
       - name: Create Release
