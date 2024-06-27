@@ -1,10 +1,75 @@
 <!DOCTYPE html>
-<html>
-<head><title>Simple Index</title></head>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+  <!-- Skeleton CSS -->
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" rel="stylesheet"/>
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" type="text/css"/>
+  <!-- Favicon -->
+  <link href="https://gist.githubusercontent.com/astariul/c09af596e802e945d3032774e10e1047/raw/f693a2e2b65966494da082887bc4be2917f615e4/random_icon.svg" rel="icon"/>
+  <!-- Custom Styles -->
+  <link href="static/index_styles.css" rel="stylesheet"/>
+  <link href="static/package_styles.css" rel="stylesheet"/>
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <!-- Our JS -->
+  <script src="static/pypi_checker.js" type="text/javascript"></script>
+  <script src="static/package_page.js" type="text/javascript"></script>
+  <title>PyPi - Strique</title>
+</head>
 <body>
-<h1>Simple Index</h1>
-<ul>
-  <li><a href="https://github.com/ssaurabh9/py_package/releases/download/v0.3.6/strique_protopy-0.3.6-py3-none-any.whl">strique_protopy-0.3.6-py3-none-any.whl</a></li>
-</ul>
+  <div class="container">
+    <section class="header">
+      <img class="value-img" src="https://gist.githubusercontent.com/astariul/c09af596e802e945d3032774e10e1047/raw/f693a2e2b65966494da082887bc4be2917f615e4/random_icon.svg" width="150"/>
+      <br/>
+      <br/>
+      <h2 class="title">Strique own PyPi</h2>
+    </section>
+    <br/>
+    <p>
+      Welcome to the private Python package index of Strique!
+      <br/>
+      You can install packages with:
+      <pre><code>pip install &lt;package_name&gt; --extra-index-url https://ssaurabh9.github.io/py_package/</code></pre>
+    </p>
+    <hr/>
+    </a>
+    <a class="card" href="public-hello/">
+      public-hello
+      <span></span>
+      <span class="version">0.2</span>
+      <br/>
+      <span class="description">
+        A public github-hosted repo, with a dependency to another package.
+      </span>
+    
+    <a class="card" href="strique-protopy/">
+      strique-protopy
+      <span></span>
+      <span class="version">0.3.6</span>
+      <br/>
+      <span class="description">
+        A package for demonstrating private PyPi hosting.
+      </span>
+    </a>
+  </div>
+  <script>
+    $(document).ready(function(){
+      for (let lnk of document.getElementsByTagName('a')) {
+          var content = lnk.textContent.trim().replace(/\s\s+/g, ' ').split(" ");
+          var pkg_name = content[0];
+          var pkg_vers = content[1];
+
+          function mark_red() {
+              lnk.classList.add("redalert");
+          }
+
+          check_supply_chain_attack(pkg_name, pkg_vers, mark_red);
+      }
+    });
+  </script>
 </body>
 </html>
