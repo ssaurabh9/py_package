@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=61.0", "requests", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,7 +7,9 @@ name = "strique-protopy"
 version = "0.3.6"
 description = "Python package for Strique AI with generated protobuf classes and binary_pb files"
 requires-python = ">=3.7"
-
+dependencies = [
+    "requests",
+]
 
 [tool.setuptools]
 package-dir = {"" = "src"}
@@ -15,6 +17,9 @@ packages = ["strique_protopy"]
 
 [tool.setuptools.package-data]
 strique_protopy = ["**/*.py", "**/*.binary_pb"]
+
+[tool.setuptools.cmdclass]
+install = "custom_install.CustomInstallCommand"
 
 [tool.pytest.ini_options]
 addopts = "--strict-markers"
