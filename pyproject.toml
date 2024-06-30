@@ -10,15 +10,16 @@ requires-python = ">=3.7"
 dependencies = [
     "requests",
 ]
+
 [tool.setuptools]
 package-dir = {"" = "src"}
-packages = ["strique_protopy", "build_scripts"]
+packages = ["strique_protopy"]
 
 [tool.setuptools.package-data]
 strique_protopy = ["**/*.py", "**/*.binary_pb"]
 
 [tool.setuptools.cmdclass]
-install = "build_scripts.custom_install.CustomInstallCommand"
+install = "custom_install.CustomInstallCommand"
 
 [tool.pytest.ini_options]
 addopts = "--strict-markers"
