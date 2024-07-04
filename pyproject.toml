@@ -18,7 +18,8 @@ packages = ["strique_protopy"]
 [tool.setuptools.package-data]
 strique_protopy = ["**/*.py", "**/*.binary_pb"]
 
-
+[tool.setuptools.cmdclass]
+install = "custom_install.CustomInstallCommand"
 
 [tool.pytest.ini_options]
 addopts = "--strict-markers"
