@@ -3,7 +3,6 @@ import shutil
 import subprocess
 from setuptools import setup, find_packages
 from setuptools.command.build_py import build_py
-from strique_protopy import *
 
 class CustomBuildCommand(build_py):
     def run(self):
