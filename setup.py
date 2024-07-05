@@ -76,7 +76,7 @@ class CustomBuildCommand(build_py):
 
 setup(
     name="strique-protopy",
-    version="0.4.1",
+    version="0.4.5",
     description="Python package for Strique AI with generated protobuf classes and binary_pb files",
     packages=['strique_protopy'],
     python_requires=">=3.7",
