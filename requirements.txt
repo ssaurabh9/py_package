@@ -1,6 +1,0 @@
-protobuf==5.27.2
-setuptools 
-wheel 
-twine 
-build
-PyGithub
