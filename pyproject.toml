@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel", "build"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "strique-proto-schema"
+version = "0.1.0"
+description = "API contracts and Data Transfer Objects (DTO) in the form of Protocol Buffers for Strique binaries."
+dependencies = [
+    "protobuf",
+    "grpcio-tools",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["protos/**/*.proto", "protos/**/*.textproto"]
+
+[tool.setuptools.cmdclass]
+install = "custom_build.CustomInstall"
+develop = "custom_build.CustomDevelop"

@@ -124,6 +124,16 @@ function ValidatePackageJson() {
   fi
 }
 
+function ValidateSetupPy() {
+  local cur_version=$1
+  local setup_version=$(grep -oP 'version="\K[^"]+' setup.py) #getting version from setup py
+
+  #assert
+  if [[ "$cur_version" != "$setup_version" ]]; then
+      ExitWithMessage "Version mismatch: VERSION file: $cur_version, setup.py: $setup_version. Please sync the versions."
+  fi
+}
+
 ##########################
 #    Utility Funtions    #
 ##########################
@@ -219,6 +229,10 @@ function UpdatePackageJson() {
   npm pkg set version="$1"
 }
 
+function UpdateSetupPy() {
+  sed -i "s/version=\"[0-9.]*\"/version=\"$1\"/" setup.py
+}
+
 ###############
 #    Modes    #
 ###############
@@ -234,6 +248,8 @@ function generate() {
   UpdatePom "$version"
   # Update contents of package.json
   UpdatePackageJson "$version"
+  # Update contents of setup.py
+  UpdateSetupPy "$version"
   
   echo "Version generation succeeded: $version" >&2
   exit 0
@@ -248,6 +264,9 @@ function validate() {
   ValidatePom "$cur_version"
   # Validate contents of package.json
   ValidatePackageJson "$cur_version"
+  # Validate contents of setup.py
+  ValidateSetupPy "$cur_version"
+  
 
   echo "Validation succeeded" >&2
   exit 0

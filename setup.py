@@ -69,7 +69,7 @@ class CustomEggInfoCommand(egg_info):
 
 setup(
     name="strique-protopy",
-    version="2.1.1",
+    version="0.3.0",
     description="Python package for Strique AI with generated protobuf classes and binary_pb files",
     packages=['strique_protopy'],
     python_requires=">=3.7",
