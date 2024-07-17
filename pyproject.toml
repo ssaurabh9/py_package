@@ -14,12 +14,12 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["strique_proto_schema", "custom_build"]
+packages = ["strique_proto_schema"]
 
 [tool.setuptools.package-data]
 strique_proto_schema = ["**/*.py", "**/*.binary_pb"]
 
 [tool.setuptools.cmdclass]
-build_py = "custom_build.CustomBuildCommand"
-egg_info = "custom_build.CustomEggInfoCommand"
-install = "custom_build.CustomInstallCommand"
+build_py = "CustomBuildCommand"
+egg_info = "CustomEggInfoCommand"
+install = "CustomInstallCommand"
