@@ -44,7 +44,7 @@ def compile_protos():
     with open(init_file, 'w') as f:
         for root, _, files in os.walk(proto_dest_dir):
             for file in files:
-                if file.endswith(('_pb2.py', '.binary_pb', '.textproto')):
+                if file.endswith(('_pb2.py', '.binary_pb')):
                     module_name = os.path.splitext(file)[0]
                     relative_path = os.path.relpath(root, proto_dest_dir).replace(os.path.sep, '.')
                     if relative_path == '.':
