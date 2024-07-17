@@ -173,7 +173,7 @@ setup(
     name="strique-proto-schema",
     version="13.6.0",
     description="API contracts and Data Transfer Objects (DTO) in the form of Protocol Buffers for Strique binaries.",
-    packages=[],
+    packages=['src'],
     python_requires=">=3.7",
     install_requires=[
         "requests",
@@ -185,6 +185,6 @@ setup(
     },
     include_package_data=True,
     package_data={
-        '': ['src/protos/**/*.proto', 'src/protos/**/*.textproto'],
+        'src': ['protos/**/*.proto', 'protos/**/*.textproto'],
     },
 )

@@ -1,0 +1,2 @@
+recursive-include src/protos *.proto *.binary_pb *.textproto
+recursive-include custom_build *.py
